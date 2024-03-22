@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class PolicyDemo {
    public static void main(String[] args) {
       List<Policy> policies = new ArrayList<>();
-      
+      int smokers = 0;
+      int nonSmokers = 0;
+
       try {
          File file = new File("PolicyInformation.txt");
          Scanner scanner = new Scanner(file);
@@ -21,16 +23,22 @@ public class PolicyDemo {
             String smokingStatus = scanner.nextLine();
             double height = Double.parseDouble(scanner.nextLine());
             double weight = Double.parseDouble(scanner.nextLine());
-            
+
             Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
             policies.add(policy);
+
+            if (smokingStatus.equals("smoker")) {
+               smokers++;
+            } else if (smokingStatus.equals("non-smoker")) {
+               nonSmokers++;
+            }
          }
 
          scanner.close();
       } catch (FileNotFoundException e) {
          System.out.println("File not found: " + e.getMessage());
       }
-      
+
       for (Policy policy : policies) {
          System.out.println("\nPolicy Information:");
          System.out.println("Policy Number: " + policy.getPolicyNumber());
@@ -43,5 +51,8 @@ public class PolicyDemo {
          System.out.println("BMI: " + policy.calculateBMI());
          System.out.println("Price: $" + policy.calculatePrice());
       }
+
+      System.out.println("\nNumber of Smokers: " + smokers);
+      System.out.println("Number of Non-Smokers: " + nonSmokers);
    }
 }
