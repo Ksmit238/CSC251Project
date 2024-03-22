@@ -237,4 +237,12 @@ public class Policy {
       System.out.println("\nPolicy Information:");
       System.out.println("Policy Number: " + policy.getPolicyNumber());
       System.out.println("Provider Name: " + policy.getProviderName());
-      System.out.println("Policyholder's Name: " + policy.getFirstName() + " " + policy.getLastName());       System
+      System.out.println("Policyholder's Name: " + policy.getFirstName() + " " + policy.getLastName());       System.out.println("Age: " + policy.getAge());
+      System.out.println("Smoking Status: " + policy.getSmokingStatus());
+      System.out.println("Height: " + policy.getHeight() + " inches");
+      System.out.println("Weight: " + policy.getWeight() + " pounds");       System.out.println("BMI: " + policy.calculateBMI());
+      System.out.println("Price: $" + policy.calculatePrice());
+
+      scanner.close();
+   }
+}
