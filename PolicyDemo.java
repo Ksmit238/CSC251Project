@@ -24,7 +24,8 @@ public class PolicyDemo {
             double height = Double.parseDouble(scanner.nextLine());
             double weight = Double.parseDouble(scanner.nextLine());
 
-            Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
+            PolicyHolder policyHolder = new PolicyHolder(firstName, lastName, age, smokingStatus, height, weight);
+            Policy policy = new Policy(policyNumber, providerName, policyHolder);
             policies.add(policy);
 
             if (smokingStatus.equals("smoker")) {
@@ -41,18 +42,12 @@ public class PolicyDemo {
 
       for (Policy policy : policies) {
          System.out.println("\nPolicy Information:");
-         System.out.println("Policy Number: " + policy.getPolicyNumber());
-         System.out.println("Provider Name: " + policy.getProviderName());
-         System.out.println("Policyholder's Name: " + policy.getFirstName() + " " + policy.getLastName());
-         System.out.println("Age: " + policy.getAge());
-         System.out.println("Smoking Status: " + policy.getSmokingStatus());
-         System.out.println("Height: " + policy.getHeight() + " inches");
-         System.out.println("Weight: " + policy.getWeight() + " pounds");
-         System.out.println("BMI: " + policy.calculateBMI());
+         System.out.println(policy);
          System.out.println("Price: $" + policy.calculatePrice());
       }
 
-      System.out.println("\nNumber of Smokers: " + smokers);
+      System.out.println("\nNumber of Policies created: " + Policy.getPolicyCount());
+      System.out.println("Number of Smokers: " + smokers);
       System.out.println("Number of Non-Smokers: " + nonSmokers);
    }
 }
